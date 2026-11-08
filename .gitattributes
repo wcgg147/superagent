@@ -1,0 +1,7 @@
+# 统一行尾：仓库与 checkout 一律 LF，跨平台协作不混乱
+* text=auto eol=lf
+
+# 二进制资源不转换
+*.jpg binary
+*.png binary
+*.gif binary
