@@ -1,0 +1,16 @@
+{
+  "name": "resident-agent-p0a",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "P0-A: a named, persistent Bot running as a local resident process",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "acceptance": "node acceptance/run.mjs",
+    "acceptance:real": "node acceptance/run-real.mjs",
+    "acceptance:composition": "node acceptance/run-composition.mjs",
+    "test": "node --test test/core.test.mjs test/p1.test.mjs test/cards.test.mjs test/dsh-contract.test.mjs test/executor.test.mjs test/p2.test.mjs test/observer.test.mjs test/model-contract.test.mjs test/concurrency.test.mjs test/threads.test.mjs test/watchdog.test.mjs test/continuity.test.mjs test/interject.test.mjs test/split.test.mjs test/nudge.test.mjs test/entity.test.mjs test/delivery.test.mjs test/multibot.test.mjs test/connection.test.mjs test/browse-page.test.mjs test/acceptance-guard.test.mjs test/artifact-pages.test.mjs test/compose-batches.test.mjs test/artifact-notes.test.mjs test/error-copy.test.mjs test/error-repeat.test.mjs",
+    "check": "node --test test/core.test.mjs test/p1.test.mjs test/cards.test.mjs test/dsh-contract.test.mjs test/executor.test.mjs test/p2.test.mjs test/observer.test.mjs test/model-contract.test.mjs test/concurrency.test.mjs test/threads.test.mjs test/watchdog.test.mjs test/continuity.test.mjs test/interject.test.mjs test/split.test.mjs test/nudge.test.mjs test/entity.test.mjs test/delivery.test.mjs test/multibot.test.mjs test/connection.test.mjs test/browse-page.test.mjs test/acceptance-guard.test.mjs test/artifact-pages.test.mjs test/compose-batches.test.mjs test/artifact-notes.test.mjs test/error-copy.test.mjs test/error-repeat.test.mjs"
+  }
+}

@@ -1,0 +1,5 @@
+interface:
+  display_name: "ketchup"
+  short_description: "Catch up on this chat and pending decisions."
+policy:
+  allow_implicit_invocation: false

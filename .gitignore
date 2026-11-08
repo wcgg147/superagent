@@ -1,0 +1,24 @@
+# 运行时状态与产物（DATA_DIR 默认落在 .data/）
+.data/
+materials/
+artifacts/
+
+# 依赖：运行时零依赖；仅验收期需要 jsdom
+node_modules/
+acceptance/ui-smoke/node_modules/
+
+# 日志与临时文件
+*.log
+*.tmp
+*.bak
+*.orig
+*.pyc
+__pycache__/
+.DS_Store
+Thumbs.db
+
+# 本地凭据：第三方 key 只走命令环境变量，绝不落盘
+.env
+.env.*
+*.key
+*.pem

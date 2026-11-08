@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>常驻 Bot · P0-A</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand">常驻 Bot <small>P0-A</small></div>
+    <div id="botList" class="bot-list"></div>
+    <form id="newBot" class="new-bot">
+      <input id="newBotName" placeholder="给 Bot 起个名字" required>
+      <input id="newBotJob" placeholder="职责（可选）">
+      <button type="submit">新建</button>
+    </form>
+    <div id="caps" class="caps"></div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <div>
+        <h1 id="botName">—</h1>
+        <div id="botJob" class="muted"></div>
+      </div>
+      <div class="controls">
+        <span id="status" class="status">空闲</span>
+        <span id="connStatus" class="conn-status" hidden>连接断了，正在重连…</span>
+        <button id="interruptBtn" type="button" disabled>停止</button>
+        <button id="workspaceBtn" type="button">工作台</button>
+        <label class="toggle"><input type="checkbox" id="detailsToggle"> 展开明细</label>
+      </div>
+    </header>
+
+    <div id="transcript" class="transcript"></div>
+
+    <div id="roomMentionWrap" class="room-mention" hidden>
+      <label for="roomMention">只发给</label>
+      <select id="roomMention"></select>
+    </div>
+
+    <form id="composer" class="composer">
+      <input id="text" autocomplete="off" placeholder="直接说要做什么…" disabled>
+      <button type="submit" id="sendBtn" disabled>发送</button>
+    </form>
+    <div class="hint">
+      试试：「看一下 materials/ 里的文件还有哪几件没做」「同时帮我推进三件事」。
+      正在做的事，中途插一句也不会被打断 —— 它会边跑边处理。环境里有新情况它也会自己留意，值得做的只摆一张卡片等你点头。工具调用默认收起 —— 需要时勾「展开明细」。
+    </div>
+  </main>
+</div>
+
+<aside id="drawer" class="drawer" hidden></aside>
+
+<script type="module" src="/app.js"></script>
+<script type="module" src="/p1.js"></script>
+</body>
+</html>

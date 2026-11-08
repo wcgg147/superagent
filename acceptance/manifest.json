@@ -1,0 +1,18 @@
+{
+  "_": "SHA-256 of the deterministic acceptance scripts, frozen against assertion changes. acceptance/run.mjs verifies every file before running it: any edit to a historical assertion fails loudly instead of silently weakening the regression. Paths are derived from each script own location (see AGENTS.md 3.4); any developer-machine absolute path is rejected. To change an assertion, first record the invariant change per AGENTS.md section 3, then regenerate this manifest.",
+  "files": {
+    "e2e/e2e.py": "286f14e83e74e5147110c7f6b533823ac328ce735eeb70485eeb8354940310f2",
+    "e2e/e2e_cards.py": "7339b913aaeb6212a72b029c66fd5cac4d51c5b154dd0ef1cbc91b93b6f088c7",
+    "e2e/e2e_concurrency.py": "e54dd084fdb6fb0d6ed569cb38190a9439734d03f106b258e33201464e69f5d2",
+    "e2e/e2e_continuity.py": "2f0d10395a1ad21b42588b9d26e4d4c57d983168797e3c2ad22837d602ed0806",
+    "e2e/e2e_executor.py": "7a61d9b3617af952bce37cdb20b7a903d33c98fdca5483f053323aca0ca674e4",
+    "e2e/e2e_observer.py": "af67b174bbd6e32ef4b37bf94d63dbda737bb95b7fa6fdae4b5e5091ceea227c",
+    "e2e/e2e_p1.py": "47a9c517b363d70f1b1bba8ed639548f99db4311cb44885d43d3c032095a546b",
+    "e2e/e2e_p2.py": "d013f5a240779d7841de5ce0c7c68a77169ea0022b7d84813bb69cf63100e55c",
+    "e2e/e2e_real.py": "483d1c27b1fd9223c90d48d60981342dbf778d4fb8de9c35c5a773feb60f9e28",
+    "e2e/e2e_threads.py": "24159e46f681bdff4380e39ec59b60e2829de84b48f54fd6c38bccb73146d945",
+    "e2e/e2e_watchdog.py": "86dbe8c233ac09c1421577644c93292b37b4c56e250c7b23e8bbfc420d20f2e0",
+    "ui-smoke/package.json": "1ee5f1a1e8a10a94b7457ba6925c454d731304bebc261230ffb4f6f177d548c3",
+    "ui-smoke/run.mjs": "16c18a90dea4244b37b40aebb9b3c5165261893ff55e2ae054633265e90c32cd"
+  }
+}

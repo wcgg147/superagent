@@ -1,0 +1,4 @@
+interface:
+  display_name: "statechart"
+policy:
+  allow_implicit_invocation: false
