@@ -5,10 +5,13 @@ our chain accepts what the model actually returns (not the model's IQ).
 Usage: DSH_TEST_KEY / DSH_TEST_BASE / DSH_TEST_MODEL env vars.
 """
 import http.server, json, os, shutil, socketserver, subprocess, sys, threading, time
+import os
+import tempfile
 import urllib.error, urllib.request
 
-WORKSPACE = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WORKSPACE = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 DATA = os.path.join(SCRATCH, "p0a-realprobe")
 MATRIX = os.path.join(SCRATCH, "real_model_report.txt")
 MODEL = os.environ.get("DSH_TEST_MODEL", "deepseek/deepseek-v4-flash")

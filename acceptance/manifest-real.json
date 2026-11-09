@@ -1,39 +1,42 @@
 {
   "_": "SHA-256 of the historical real-model / combination acceptance scripts. 'files' are byte-identical originals. 'sanitized.files' are 5 scripts whose historical read_key() fished a key literal out of a session log; only read_key() was replaced, all check(...) assertions byte-identical. 'synced.files' are scripts whose stale assertions were aligned with the deterministic group after a product behaviour change; those assertions DID change and are NOT claimed byte-identical. Never claim sanitized/synced files are byte-identical originals.",
-  "key_env": ["DSH_TEST_KEY", "DEEPSEEK_API_KEY"],
+  "key_env": [
+    "DSH_TEST_KEY",
+    "DEEPSEEK_API_KEY"
+  ],
   "sanitized": {
     "_": "Authorized conflict resolution (AGENTS.md §3.1): AGENTS.md §2 requires the third-party key to come only from command env and never be read from disk. The historical read_key() violated it. Per line 5 the conflict was reported, NOT silently compromised; after the user said '继续' to the written plan, only read_key() was changed. All assertions, ports, reports and model settings are untouched.",
     "read_key_replacement": "return os.environ.get(\"DSH_TEST_KEY\", \"\").strip() or None",
     "files": {
       "real/trunc_accept.py": {
-        "sha256": "f3906496d4057ea6c13176395d8decc12077a5b13aa630180120b72b4dffe3e3",
+        "sha256": "cefdacccecaca310b4a4bc55b573698575990a822291d2c905556a2c31eb5ffc",
         "originalSha256": "92da5570b5a1212ee0879fd0c2ef22b3c1d061110ebda84e8bf074004b7a4e4b",
-        "assertionsSha256": "93191e726008b07ad8c743bc24d2bacbdaed401dcdd10722305322809f6d960c",
-        "originalAssertionsSha256": "93191e726008b07ad8c743bc24d2bacbdaed401dcdd10722305322809f6d960c"
+        "assertionsSha256": "63e1a45e42a4655a7b0fe35d9da9b46a5fe0c36651efdb12917ff2f8a41e8512",
+        "originalAssertionsSha256": "63e1a45e42a4655a7b0fe35d9da9b46a5fe0c36651efdb12917ff2f8a41e8512"
       },
       "real/soak_all.py": {
-        "sha256": "52be1a0142f23dc543366c2a8b730c574f45da8fa7b67f3d9927b6294afb0289",
+        "sha256": "5ef3bdc2345c324a72d6713a70d63ee9c13a77cdfd74ea18ddf0d6a5c4f68200",
         "originalSha256": "e49b68f2c9c2ed301cabfe6e0bba9f6cd52d9e21ceac138b2345b19e357642aa",
-        "assertionsSha256": "15394ddd7e1561b6ee181f0921aecde39105b5600b215a84bc1faffaf1a28c24",
-        "originalAssertionsSha256": "15394ddd7e1561b6ee181f0921aecde39105b5600b215a84bc1faffaf1a28c24"
+        "assertionsSha256": "4a989b148de1f2d1fabe029e2afad417c103fa123fceb68a54c059794f0f3d89",
+        "originalAssertionsSha256": "4a989b148de1f2d1fabe029e2afad417c103fa123fceb68a54c059794f0f3d89"
       },
       "real/multibot_accept.py": {
-        "sha256": "f5a2a877af64046e84bc71315ae55ad8313d073da38902cd0c14309a89956b27",
+        "sha256": "262c422b4a0d5f479c81d9c77721fce07700b751f37e5365b36dda2e98c78efe",
         "originalSha256": "1db56d758cbdce71791d3587a166ccaf0016dbf792dc862d84891aaa4f5f8fce",
-        "assertionsSha256": "c74886bdad3527d1d0b6cd43bd59f861741d29146d1d9c2a7da7174d3bf8a585",
-        "originalAssertionsSha256": "c74886bdad3527d1d0b6cd43bd59f861741d29146d1d9c2a7da7174d3bf8a585"
+        "assertionsSha256": "61da6b21fd43167607f4e3d46f7e07309dbc3ed4f01c11e6eaa154738ee4364b",
+        "originalAssertionsSha256": "61da6b21fd43167607f4e3d46f7e07309dbc3ed4f01c11e6eaa154738ee4364b"
       },
       "real/p12_accept.py": {
-        "sha256": "12fd07ddcbb78d9c603b6893da5277c7bf124f58f636b7cfd2de12daeeb31907",
+        "sha256": "922855b2b07f8720e713cb09d5c6e1c827f85ea10c123a02893e96ce3fda3682",
         "originalSha256": "868ef08890c1f4c82d671789451edc3b7024d9d9de50718b2a428a22d39d218d",
-        "assertionsSha256": "45dba38003b33cf4ab32326198b484abb8070d09d2d415b513e8821fe0c7c322",
-        "originalAssertionsSha256": "45dba38003b33cf4ab32326198b484abb8070d09d2d415b513e8821fe0c7c322"
+        "assertionsSha256": "f8a38a571185bfd49e3ba0095a0d8f162e38c2812cc16de6489acdda8973d49f",
+        "originalAssertionsSha256": "f8a38a571185bfd49e3ba0095a0d8f162e38c2812cc16de6489acdda8973d49f"
       },
       "real/nudge_accept.py": {
-        "sha256": "d5bf887a9a93ab07da16208a51cecce05b13328e81faa5528e973af9e388ef26",
+        "sha256": "0f7c019a7f05daaf0e15ad7b74004789c117328a9f5b939f68192070af79775a",
         "originalSha256": "32c29916e26fd9b4b3fdd921f11ac915d3f4ca94540fc2ed180451159e2e5755",
-        "assertionsSha256": "8d20c72e3b8926cebc657513d517d3d87eb4c17c4e65bb95d0f343e74306e31e",
-        "originalAssertionsSha256": "8d20c72e3b8926cebc657513d517d3d87eb4c17c4e65bb95d0f343e74306e31e"
+        "assertionsSha256": "13c3760fcf47b769650bec972c945dba0390b91cfc6df6869aa8f2d77b497070",
+        "originalAssertionsSha256": "13c3760fcf47b769650bec972c945dba0390b91cfc6df6869aa8f2d77b497070"
       }
     }
   },
@@ -41,7 +44,7 @@
     "_": "Authorized in the previous turn (user said 继续 after the plan was written down). Product added 'interjection does not kill the running turn', so concurrent scenarios now emit interjection acknowledgement bubbles. The deterministic group e2e_concurrency.py had already split replies/acks; real/conc_e2e_real.py lines 143-151 were stale and produced 2 false FAILs. Aligned to the same split, kept the single-outbox check on ALL messages, and ADDED a new assertion that acks also come from the outbox. No assertion was widened or removed.",
     "files": {
       "real/conc_e2e_real.py": {
-        "sha256": "f22c9635c06085e1dce6c4e075dabe1d0cca2046545532a91ab3ea9fa3484a76",
+        "sha256": "c666ce6266c126c5f7da7f7ca30d15f0b6a591154f3146f143e859031411fce7",
         "originalSha256": "d3872f6f43e9ad5f26807182b4d515a53864eb49abc96c8b5baacd6333453fc4",
         "changedLines": "143-151",
         "reference": "acceptance/e2e/e2e_concurrency.py lines 166-178"
@@ -49,16 +52,16 @@
     }
   },
   "files": {
-    "real/observe_e2e_real.py": "080d4e9843bd0b110303dc7d25c6ab29c11acb4832ffb127260ac175e2ac063b",
-    "real/judge_probe.py": "52fa81d8a05005a8b4a9a5943524386b5f16ab05c0e8eff69f9f8b554decb492",
-    "real/real_model_probe.py": "41e5401df725386e195674c7d7011f46897eef423733a7646ea6920f7e995d59",
-    "real/dsh_real_accept.py": "152eaf38cdf698fdee604daadea0545bb59b12c75c3f5632aba5cc714ef60ef2",
-    "real/delivery_accept.py": "2192d48407b859724dae98965089d0e6af9555a7c3fba07fbc6a6b2d088c5564",
-    "real/entity_accept.py": "d3c4c226928288b80958e1d35328dac7853eb7dc32df180c5354c16bda2c31e6",
-    "real/interject_accept.py": "5e4a5679116f8c903c6938b7c418753885fd4d74bf6cf9394077a123345a4bbd",
-    "real/split_accept.py": "2a14ed2b2f28c0efd2568e10feba9dbcc800d66afdfe44e225430913197bc079",
-    "real/split_quant.py": "2f71acb841bec4502f28ff873e301a9e8fab316fba36e65f3113f5068fd23cb4",
-    "real/capability_probe.py": "83bd43dcccf7eb84992e00c046ce073b964e789f967c9a46aa03c40532a9735f",
-    "real/task_battery.py": "c5e95e62c1179df13e08ef400810b1e1c508b4f599f06dd2e8447a3f681ba654"
+    "real/observe_e2e_real.py": "4abdbc1d1556907f6d4ab3cc45863121277ab402398a16f841332f91fcab9e53",
+    "real/judge_probe.py": "44de6daf2a5222b6454c628ac05df403a3fd119896aa896e2cbd751e44f8e485",
+    "real/real_model_probe.py": "dec2f45683b46cec35fb2c244111e81eb5df3b5f3ba6df59d3929b38d01321c2",
+    "real/dsh_real_accept.py": "c99e77106bfb6f09862c73e3f6614923ee5b830582065badcd243b0f21886db6",
+    "real/delivery_accept.py": "e9711319313aae0a99726b03053cc0eeecd7b0a53d21af66ed1e59c989a48ca7",
+    "real/entity_accept.py": "9a38f04151006734848b7b0888676494d7bc0e208f30c2632d6e29ec137bbb89",
+    "real/interject_accept.py": "746efeb0ca2388797a4c72923cb24c806c2cff102d8fc71455c7a5d232d785a1",
+    "real/split_accept.py": "736daeca562e52acb417192234f49ff88de7c376ae52da5b7b8851365f92f7c9",
+    "real/split_quant.py": "3cc0790facb0385fe07d4cbb36bda322abce41096f26dd7f8eebbe4f51843b26",
+    "real/capability_probe.py": "59f3f78b5358a6bb60dc237184117db0a941ea7136a96c1222da7a3a2769f771",
+    "real/task_battery.py": "73afd3c77c865fb83caf4932483f3a2880dd47b747f9eab05074db71e7a2f18f"
   }
 }

@@ -134,6 +134,16 @@
 | 为什么 | 仓库克隆到任意路径后，`npm run acceptance` 原先会因 `INTEGRITY_FAIL` 直接退出，或静默测到别的目录；这直接决定开源后别人能不能复现 §5 第 2 步的 243 项。 |
 | 如何重新验收 | 改动前把 13 个钉住文件备份到会话 scratch；用「移除被改的路径行后逐字节比对」证明断言区与旧版完全相同；重生成 `manifest.json`；实跑 `npm test` / `check` 265/265、`npm run acceptance` **HTTP 203/203 + DOM 40/40 = 243/243**、`acceptance:real --list` INTEGRITY 30/30、`node --check`、密钥扫描、端口释放。 |
 
+### 3.5 开源隐私脱敏：real 层去除真实本机路径（对 §3.4 约定的调整）
+
+**授权依据**：开源整理收尾做隐私扫描，发现 `acceptance/real/*.py`（13 个）硬编码了开发机绝对路径——Windows 用户名 `meme`、桌面项目 `C:\Users\meme\Desktop\deepseek` 与 `C:\Users\meme\Desktop\编程ide`、PI-Desktop 内部路径 `C:\Users\meme\.pi-desktop\scratch`、以及某次中间产物的会话 UUID `25f049eb-…`。这些会随开源泄露用户目录结构与用户名。原 §3.4 为保留「脱敏版只改了 `read_key()`」的审计证据而将 real 层钉为「一行未改」；但隐私泄露优先级高于该审计便利性，经项目所有者确认（选 B 而非排除 real/：排除会破坏 `test/acceptance-guard.test.mjs` 对 real 文件的强依赖、违反 test 只增不删），对 real 层仅做路径脱敏。
+
+| 项 | 内容 |
+| --- | --- |
+| 改哪条不变量 | `acceptance/real/*.py`（13 个）里的真实本机绝对路径常量：`WORKSPACE`/`ROOT`（`C:\Users\meme\Desktop\deepseek`）改为从 `__file__` 推导 repo-root 并允许 `RESIDENT_REPO` env 覆盖；`SCRATCH` 的 fallback 由 `C:\Users\meme\.pi-desktop\scratch` 改为 `tempfile.gettempdir()`；`nudge_accept.py` 的 `cwd=` 改为推导的 `_REPO_ROOT`；`dsh_real_accept.py` 的 `RC2`（`C:\Users\meme\Desktop\编程ide\…\bin.js`）改为 `os.environ.get("DSH_CLI_ENTRY","")`；`split_accept.py` 的会话 UUID 硬编码路径改为 `os.path.join(SCRATCH,"split_timeline.json")`。**一律不变的**：所有 `check(...)` 断言、端口、报告格式、`read_key()` 只读 env 的脱敏契约、`SUMMARY:` 行、断言区语义；`src/**`、`test/**`、`acceptance/e2e/**` **一行未改**。 |
+| 为什么 | 开源会泄露 Windows 用户名与桌面项目名/目录结构，属隐私问题，优先级高于「real 层一字未改」的审计便利性。排除 real/ 会破坏 `npm test` 的 `acceptance-guard`（强依赖 real 文件存在与逐字节哈希），违反「test 只增不删」，故采用脱敏保留。 |
+| 如何重新验收 | 脱敏后重算 `acceptance/manifest-real.json` 的 `files`(11)/`sanitized.files`(5)/`synced.files`(1) 全部 SHA-256 与断言区哈希（guard 比对自动通过，不改动 `test/acceptance-guard.test.mjs` 代码）；实跑 `npm test`/`check` 仍 **265/265**；路径/凭据扫描确认 real 层 0 命中真实本机路径；`git` 提交 author 改为 GitHub no-reply 邮箱。 |
+
 ### 可改区（相对自由）
 
 - 提示词 / 话术文案（但保持「稳定 system 前缀、动态信息放尾部 user」这条契约）

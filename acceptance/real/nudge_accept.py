@@ -1,3 +1,4 @@
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 """真模型验收：主动回访（人走开了，它自己回来）。
 
 真实场景：
@@ -8,6 +9,7 @@
 判据只看链路结构与话术是否具体，不评生成质量。
 """
 import json
+import tempfile
 import os
 import subprocess
 import time
@@ -67,7 +69,7 @@ def start_service():
         env["DEEPSEEK_MODEL"] = "deepseek/deepseek-v4-flash"
     proc = subprocess.Popen(
         ["node", "src/server.mjs"],
-        cwd=r"C:\Users\meme\Desktop\deepseek",
+        cwd=_REPO_ROOT,
         env=env,
         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(60):
@@ -106,7 +108,7 @@ def main():
         env["DEEPSEEK_MODEL"] = "deepseek/deepseek-v4-flash"
     subprocess.Popen(
         ["node", "src/server.mjs"],
-        cwd=r"C:\Users\meme\Desktop\deepseek",
+        cwd=_REPO_ROOT,
         env=env,
         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(60):

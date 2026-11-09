@@ -10,6 +10,7 @@
   S5 回滚：一键 rollback 后不再有灰度 Bot
 """
 import json
+import tempfile
 import os
 import re
 import shutil
@@ -18,10 +19,11 @@ import time
 import urllib.error
 import urllib.request
 
-ROOT = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 RC5 = os.path.join(SCRATCH, "dsh_rc5", "node_modules", "@deepseek-ai", "dsh", "lib", "bin.js")
-RC2 = r"C:\Users\meme\Desktop\编程ide\node_modules\@deepseek-ai\dsh\lib\bin.js"
+RC2 = os.environ.get("DSH_CLI_ENTRY", "")
 
 HARD = []
 SOFT = []

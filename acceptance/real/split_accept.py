@@ -74,7 +74,7 @@ def main():
     dones = [e for e in items if e["kind"] == "task/done"]
     errors = [e for e in items if e["kind"] == "error"]
 
-    with open(r"C:\Users\meme\.pi-desktop\scratch\25f049eb-5dfe-4cc3-8f8c-7c9eae0307cb\split_timeline.json",
+    with open(os.path.join(SCRATCH, "split_timeline.json"),
               "w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False, indent=2)
 

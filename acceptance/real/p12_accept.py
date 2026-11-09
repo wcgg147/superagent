@@ -7,6 +7,7 @@
   S5 DSH 三态灰度的真实 CLI 路径：本机没装就如实报告未验证
 """
 import json
+import tempfile
 import os
 import re
 import shutil
@@ -17,8 +18,9 @@ import urllib.request
 
 BASE = "http://127.0.0.1:3217"
 PORT = "3217"
-ROOT = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 DATA = os.path.join(SCRATCH, "p12_accept")
 
 HARD = []

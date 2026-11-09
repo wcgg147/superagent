@@ -8,10 +8,13 @@ We label a realistic event set, run the product's own judge() through the real
 DeepSeek endpoint, and report both directions.
 """
 import json, os, subprocess, sys, time
+import os
+import tempfile
 import urllib.error, urllib.request
 
-WORKSPACE = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WORKSPACE = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 REPORT = os.path.join(SCRATCH, "judge_report.txt")
 MODEL = os.environ.get("DSH_TEST_MODEL", "deepseek/deepseek-v4-flash")
 BASE = os.environ.get("DSH_TEST_BASE", "https://api.qnaigc.com/v1").rstrip("/")

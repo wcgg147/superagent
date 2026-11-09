@@ -7,6 +7,7 @@
   S4 上下文隔离：B 不能召回 A 读过的东西
 """
 import json
+import tempfile
 import os
 import re
 import shutil
@@ -17,8 +18,9 @@ import urllib.request
 
 BASE = "http://127.0.0.1:3214"
 PORT = "3214"
-ROOT = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 DATA = os.path.join(SCRATCH, "multibot_accept")
 TIMEOUT = 300
 

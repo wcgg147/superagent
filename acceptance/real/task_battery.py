@@ -6,10 +6,13 @@ an event stream, and several things delegated at once. The point is to surface
 irritation that isolated assertions cannot see.
 """
 import http.server, json, os, shutil, socketserver, subprocess, sys, threading, time
+import os
+import tempfile
 import urllib.error, urllib.request
 
-WORKSPACE = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WORKSPACE = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 DATA = os.path.join(SCRATCH, "p0a-battery")
 REPORT = os.path.join(SCRATCH, "battery_report.txt")
 shutil.rmtree(DATA, ignore_errors=True)

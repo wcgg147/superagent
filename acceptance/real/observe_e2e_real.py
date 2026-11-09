@@ -9,9 +9,12 @@ We deliberately assert only on LINK STRUCTURE (event kinds, seq watermark, one
 outbox, terminal turn), never on the quality of what the model writes.
 """
 import json, os, shutil, subprocess, sys, time, urllib.error, urllib.request
+import os
+import tempfile
 
-WORKSPACE = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WORKSPACE = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 DATA = os.path.join(SCRATCH, "p0a-observe-real-e2e")
 REPORT = os.path.join(SCRATCH, "observe_e2e_report.txt")
 ROOT = "http://127.0.0.1:3110"

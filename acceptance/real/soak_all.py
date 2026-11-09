@@ -9,6 +9,7 @@
   SOFT  能力触发率（如实报告，不因模型没配合就判链路崩）
 """
 import json
+import tempfile
 import os
 import re
 import shutil
@@ -19,8 +20,9 @@ import urllib.error
 import urllib.request
 
 BASE = "http://127.0.0.1:3213"
-ROOT = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 PORT = "3213"
 ROUNDS = int(os.environ.get("SOAK_ROUNDS", "1"))
 TIMEOUT = 300

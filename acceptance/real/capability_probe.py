@@ -5,10 +5,13 @@ product to see whether our chain can carry it -- not to grade the model's IQ.
 Output: a matrix of ok / partial / blocked plus the concrete missing capability.
 """
 import http.server, json, os, re, shutil, socketserver, subprocess, sys, threading, time
+import os
+import tempfile
 import urllib.error, urllib.request
 
-WORKSPACE = r"C:\Users\meme\Desktop\deepseek"
-SCRATCH = os.environ.get("PI_SCRATCH_DIR", r"C:\Users\meme\.pi-desktop\scratch")
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WORKSPACE = os.environ.get("RESIDENT_REPO", _REPO_ROOT)
+SCRATCH = os.environ.get("PI_SCRATCH_DIR", tempfile.gettempdir())
 DATA = os.path.join(SCRATCH, "p0a-probe")
 MATRIX = os.path.join(SCRATCH, "capability_matrix.txt")
 shutil.rmtree(DATA, ignore_errors=True)
