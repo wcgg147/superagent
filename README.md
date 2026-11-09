@@ -1,6 +1,7 @@
 # 常驻 Bot · P0-A
 
 一个**跑在用户本机常驻进程**上的最小可运行闭环：命名 Bot、持久上下文、主动观察、并发推进、连续处理，低打扰、人在回路。执行面衍生自 DeepSeek `dsh`（`@deepseek-ai/dsh`）的源码架构，通过可替换的 `DshExecutor` 接入（详见下文「DSH 执行面」）。
+ **状态（原型）**：四条定义性能力已落地并通过确定性 + 历史真模型验收，但**长文档分批 compose 之后的真模型全套回归尚未重跑**（需新 key）；另有已知上限（SOFT 触发率非 100%、定时器延迟长尾、材料有界）。完整进度、验收分层与待验证项见 [PROJECT_STATUS.md](./PROJECT_STATUS.md)。
 
 > **给 AI agent 的规矩**：动手改代码或跑长任务前，先读项目根 [AGENTS.md](./AGENTS.md)。两个第三方工程技能库在 `.agents/skills/`（Addy Osmani 25 个 / Lauren Tan pstack 63 个），与 AGENTS.md 冲突时以 AGENTS.md 为准。当前进度与验收见 [PROJECT_STATUS.md](./PROJECT_STATUS.md)；产品方案见 [SUPERAGENT_PRODUCT_PLAN.md](./SUPERAGENT_PRODUCT_PLAN.md)。
 > **许可证**：MIT，见 [LICENSE](./LICENSE)。`.agents/skills/` 内两个第三方库各有自己的 MIT LICENSE 与出处，随仓库保留。
