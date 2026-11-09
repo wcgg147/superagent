@@ -5,3 +5,11 @@
 *.jpg binary
 *.png binary
 *.gif binary
+ 
+ # 验收脚本：确定性层(e2e/、ui-smoke/)用 LF，真模型层(real/)保持 CRLF。
+ # 原因：manifest-real.json 逐字节钉死了 real/ 的 CRLF 哈希（AGENTS.md §3.5 隐私脱敏），
+ # 若交给 `* text=auto eol=lf` 统一归一化，会把 real/ 重写成 LF 从而破坏 acceptance-guard。
+ # 这里显式按层钉死行尾，checkout 时还原成与清单一致的内容。
+ acceptance/e2e/** text eol=lf
+ acceptance/ui-smoke/** text eol=lf
+ acceptance/real/** text eol=crlf
